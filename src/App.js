@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
+import Message from './Message';
 
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState(['hello', 'hi', 'hey']);
-  console.log(input);
-  console.log(messages);
+  const [username, setUsername] = useState('');
+
+  //useState = variable in REACT.
+  //useEffect = run code on a condition in REACT.
+
+  useEffect(() => {
+    //run code here..
+    //if dependecy is blank, this code runs ONCE when the app component loads
+    //if input is present, this code runs when the input changes
+
+
+  }, [input])
 
   const sendMessages = (event) => {
     event.preventDefault();
@@ -17,13 +29,16 @@ function App() {
     <div className="App">
       <h1>Welcome to Messenger Clone</h1>
       <form>
-        <input value={input} onChange={event => setInput(event.target.value)} />
-        <button type="submit" onClick={sendMessages}>Send Message</button>
+        <FormControl>
+          <InputLabel>Enter a message...</InputLabel>
+          <Input value={input} onChange={event => setInput(event.target.value)} />
+          <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessages}>Send Message</Button>
+        </FormControl>
       </form>
 
       {
         messages.map(message => (
-          <p>{message}</p>
+          <Message text={message} />
         ))
       }
 
