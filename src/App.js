@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { FormControl, IconButton, Input, InputLabel } from '@material-ui/core';
+import { FormControl, IconButton, Input } from '@material-ui/core';
 import Message from './Message';
 import firebase from 'firebase';
 import db from './firebase';
@@ -48,10 +48,9 @@ function App() {
       <h1>Welcome to Messenger Clone</h1>
       <h2> Hi, {username}</h2>
       <form className="app__form">
-        <FormControl>
-          <InputLabel>Enter a message...</InputLabel>
-          <Input value={input} onChange={event => setInput(event.target.value)} />
-          <IconButton disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessages}>
+        <FormControl className="app__formControl">
+          <Input className="app__input" placeholder="Enter a message..." value={input} onChange={event => setInput(event.target.value)} />
+          <IconButton className="app__iconButton" disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessages}>
             <SendIcon />
           </IconButton>
         </FormControl>

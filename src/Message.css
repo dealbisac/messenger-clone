@@ -2,6 +2,7 @@
   padding: 10px;
   margin: 10px;
   width: fit-content;
+  border-radius: 10px;
 }
 
 .message__user {
@@ -12,8 +13,10 @@
 
 .message__userCard {
   background-color: #0b81ff !important;
+  padding: 2px !important;
 }
 
 .message__guestCard {
   background-color: #e9e9eb;
+  padding: 2px !important;
 }
