@@ -4,7 +4,7 @@ import './Message.css';
 function Message(props) {
     return (
         <div>
-            <p>{props.text}</p>
+            <p>{props.username}: {props.text}</p>
         </div>
     )
 }
