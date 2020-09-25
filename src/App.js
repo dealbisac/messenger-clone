@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import Message from './Message';
+import db from './firebase';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([
-    { username: 'dip', text: 'hello' },
-    { username: 'Ram', text: 'hey' }]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState('');
 
   //useState = variable in REACT.
   //useEffect = run code on a condition in REACT.
+
+  useEffect(() => {
+    db.collection('messages').onSnapshot(snapshot => {
+      setMessages(snapshot.docs.map(doc => doc.data()))
+    })
+  }, []);
 
   useEffect(() => {
     //run code here..
@@ -22,7 +27,7 @@ function App() {
 
   const sendMessages = (event) => {
     event.preventDefault();
-    setMessages([...messages, { username: username, text: input }]);
+    setMessages([...messages, { username: username, message: input }]);
     setInput('');
   }
 
