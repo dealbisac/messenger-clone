@@ -15,9 +15,8 @@ function App() {
     //run code here..
     //if dependecy is blank, this code runs ONCE when the app component loads
     //if input is present, this code runs when the input changes
-
-
-  }, [input])
+    setUsername(prompt('Please enter your name'));
+  }, [])
 
   const sendMessages = (event) => {
     event.preventDefault();
@@ -28,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to Messenger Clone</h1>
+      <h2> Hi, {username}</h2>
       <form>
         <FormControl>
           <InputLabel>Enter a message...</InputLabel>
